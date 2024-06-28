@@ -1,0 +1,16 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body,
+html {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.gratitude-item {
+  opacity: 0; /* Initially hidden */
+}
+
+.gratitude-item.opacity-100 {
+  opacity: 1; /* Displayed with full opacity */
+}
