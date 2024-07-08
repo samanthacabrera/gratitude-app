@@ -21,7 +21,6 @@ metadata = MetaData(naming_convention={
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(metadata=metadata)
-
+db.init_app(app)
 
 migrate = Migrate(app, db)
-db.init_app(app)

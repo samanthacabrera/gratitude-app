@@ -2,15 +2,43 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 body,
 html {
-  font-family: "Courier New", Courier, monospace;
+  font-family: sans-serif;
+  color: black;
+  margin: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #ffcc00, #ff6699, #cc33ff, #3399ff);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+#title {
+  font-family: "Honk";
+  font-family: "Major Mono Display", monospace;
 }
 
 .gratitude-item {
-  opacity: 0; /* Initially hidden */
+  opacity: 0;
 }
 
 .gratitude-item.opacity-100 {
-  opacity: 1; /* Displayed with full opacity */
+  opacity: 1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
