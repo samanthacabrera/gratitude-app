@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import GratitudeList from './GratitudeList';
 import AddGratitude from './AddGratitude';
+import Counter from './Counter';
 import './App.css';
 
 function App() {
@@ -24,8 +25,6 @@ function App() {
   };
 
   const handleAddGratitude = async (newGratitude) => {
-    setGratitudes([newGratitude, ...gratitudes]); // Add new gratitude to state immediately
-
     try {
       const response = await fetch('api/gratitudes', {
         method: 'POST',
@@ -37,14 +36,15 @@ function App() {
       if (!response.ok) {
         throw new Error('Failed to add gratitude');
       }
+      fetchGratitudes();
     } catch (error) {
       console.error('Error adding gratitude:', error);
     }
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden">
-      <h1 id="title" className="text-7xl text-center m-8 hover:text-slate-200 transition ease-in-out duration-500">
+    <div className="h-screen w-screen overflow-hidden relative text-slate-50 opacity-50">
+      <h1 id="title" className="text-7xl text-center m-8">
         Gratitude <br/>Globe
       </h1>
       <div className="flex flex-col items-center justify-center">
@@ -52,7 +52,9 @@ function App() {
         <AddGratitude onAddGratitude={handleAddGratitude} />
       </div>
 
-      <div className="absolute bottom-2 right-2 border border-black py-2 px-4 rounded-full hover:text-slate-200 hover:border-slate-200 transition">
+      <Counter count={gratitudes.length} />
+
+      <div className="absolute bottom-2 right-2 border border-2 border-slate-50 opacity-100 py-2 px-4 text-xl rounded-full hover:text-slate-200 hover:border-slate-200 transition">
         <a href="https://github.com/samanthacabrera/gratitude-app" target="_blank" rel="noopener noreferrer">
           ?
         </a>
